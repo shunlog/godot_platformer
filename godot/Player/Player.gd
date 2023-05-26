@@ -13,8 +13,8 @@ var velocity := Vector2(0,0)
 var face_direction := 1
 var x_dir := 1
 
-export var max_speed: float = 560
-export var acceleration: float = 2880
+export var max_speed: float = 500
+export var acceleration: float = 2000
 export var turning_acceleration : float = 9600
 export var deceleration: float = 3200
 # ------------------------------------------ #
@@ -25,7 +25,7 @@ export var gravity_max : float = 1020
 # ------------- #
 
 # JUMP VARAIABLES ------------------- #
-export var jump_force : float = 1400
+export var jump_force : float = 1200
 export var jump_cut : float = 0.25
 export var jump_gravity_max : float = 500
 export var jump_hang_treshold : float = 2.0

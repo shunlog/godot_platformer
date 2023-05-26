@@ -10,16 +10,18 @@ viewport_path = NodePath("Viewport")
 
 [sub_resource type="OpenSimplexNoise" id=12]
 octaves = 1
-period = 27.1
-persistence = 0.271
+period = 16.3
+persistence = 0.161
+lacunarity = 1.73
 
 [sub_resource type="NoiseTexture" id=13]
 width = 1024
 noise = SubResource( 12 )
 
 [sub_resource type="OpenSimplexNoise" id=14]
-period = 94.8
+period = 32.8
 persistence = 1.0
+lacunarity = 1.33
 
 [sub_resource type="NoiseTexture" id=15]
 width = 1024
@@ -27,16 +29,16 @@ noise = SubResource( 14 )
 
 [sub_resource type="OpenSimplexNoise" id=16]
 octaves = 5
-period = 33.2
-persistence = 0.837
+period = 22.4
+persistence = 0.621
 
 [sub_resource type="NoiseTexture" id=17]
 width = 1024
 noise = SubResource( 16 )
 
 [sub_resource type="Gradient" id=18]
-offsets = PoolRealArray( 0, 0.553191, 0.666667, 0.702128, 1 )
-colors = PoolColorArray( 0.609375, 0.609375, 0.609375, 1, 0.679147, 0.679147, 0.679147, 1, 0.699219, 0.699219, 0.699219, 1, 1, 1, 1, 1, 1, 1, 1, 1 )
+offsets = PoolRealArray( 0.663842, 0.779661 )
+colors = PoolColorArray( 0.689258, 0.689258, 0.689258, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=19]
 gradient = SubResource( 18 )

@@ -1,4 +1,3 @@
-tool
 extends TextureRect
 
 func _ready():

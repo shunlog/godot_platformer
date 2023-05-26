@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "TileMap",
+"class": "MineableTileMap",
+"language": "GDScript",
+"path": "res://World/Tilemap/MineableTileMap.gd"
+} ]
+_global_script_class_icons={
+"MineableTileMap": ""
+}
+
 [application]
 
 config/name="Terraria Clone"

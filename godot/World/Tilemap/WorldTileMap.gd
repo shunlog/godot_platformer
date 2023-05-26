@@ -1,4 +1,4 @@
-extends TileMap
+extends MineableTileMap
 
 onready var bitmap :TextureRect = $WorldBitmap
 

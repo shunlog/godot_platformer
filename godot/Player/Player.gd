@@ -1,12 +1,4 @@
 extends KinematicBody2D
-# This character controller was created with the intent of being a decent starting point for Platformers.
-# 
-# Instead of teaching the basics, I tried to implement more advanced considerations.
-# That's why I call it 'Movement 2'. This is a sequel to learning demos of similar a kind.
-# Beyond coyote time and a jump buffer I go through all the things listed in the following video:
-# https://www.youtube.com/watch?v=2S3g8CgBG1g
-# Except for separate air and ground acceleration, as I don't think it's necessary.
-
 
 # BASIC MOVEMENT VARAIABLES ---------------- #
 var velocity := Vector2(0,0)
@@ -51,6 +43,15 @@ func get_input() -> Dictionary:
 	}
 
 
+func _input(event):
+	# TODO dig() should be called from the Builder node
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			_hit_block()
+		elif event.button_index == BUTTON_RIGHT and event.pressed:
+			_place_block(1)
+
+
 func _physics_process(delta: float) -> void:
 	x_movement(delta)
 	jump_logic(delta)
@@ -58,6 +59,19 @@ func _physics_process(delta: float) -> void:
 	
 	timers(delta)
 	apply_velocity()
+
+
+func _hit_block():
+	if not Global.fg_tilemap:
+		return
+	Global.fg_tilemap.hit_block()
+	
+
+func _place_block(tile):
+	if not Global.fg_tilemap:
+		return
+	var placed = Global.fg_tilemap.place_block(tile)
+	print(placed)
 
 
 func apply_velocity() -> void:
@@ -162,4 +176,5 @@ func timers(delta: float) -> void:
 	# This way everything is contained in just 1 script with no node requirements
 	jump_coyote_timer -= delta
 	jump_buffer_timer -= delta
+
 

@@ -1,30 +1,29 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 # BASIC MOVEMENT VARAIABLES ---------------- #
-var velocity := Vector2(0,0)
 var face_direction := 1
 var x_dir := 1
 
-export var max_speed: float = 500
-export var acceleration: float = 2000
-export var turning_acceleration : float = 9600
-export var deceleration: float = 3200
+@export var max_speed: float = 1300
+@export var acceleration: float = 5000
+@export var turning_acceleration : float = 9600
+@export var deceleration: float = 4000
 # ------------------------------------------ #
 
 # GRAVITY ----- #
-export var gravity_acceleration : float = 3840
-export var gravity_max : float = 1020
+@export var gravity_acceleration : float = 4000
+@export var gravity_max : float = 5000
 # ------------- #
 
 # JUMP VARAIABLES ------------------- #
-export var jump_force : float = 1200
-export var jump_cut : float = 0.25
-export var jump_gravity_max : float = 500
-export var jump_hang_treshold : float = 2.0
-export var jump_hang_gravity_mult : float = 0.1
+@export var jump_force : float = 1700
+@export var jump_cut : float = 0.4
+@export var jump_gravity_max : float = 1500
+@export var jump_hang_treshold : float = 1.0
+@export var jump_hang_gravity_mult : float = 0.1
 # Timers
-export var jump_coyote : float = 0.08
-export var jump_buffer : float = 0.1
+@export var jump_coyote : float = 0.08
+@export var jump_buffer : float = 0.1
 
 var jump_coyote_timer : float = 0
 var jump_buffer_timer : float = 0
@@ -37,19 +36,10 @@ func get_input() -> Dictionary:
 	return {
 		"x": int(Input.is_action_pressed("player_right")) - int(Input.is_action_pressed("player_left")),
 		"y": int(Input.is_action_pressed("player_down")) - int(Input.is_action_pressed("player_up")),
-		"just_jump": Input.is_action_just_pressed("jump") == true,
-		"jump": Input.is_action_pressed("jump") == true,
-		"released_jump": Input.is_action_just_released("jump") == true
+		"just_jump": Input.is_action_just_pressed("player_jump") == true,
+		"jump": Input.is_action_pressed("player_jump") == true,
+		"released_jump": Input.is_action_just_released("player_jump") == true
 	}
-
-
-func _input(event):
-	# TODO dig() should be called from the Builder node
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			_hit_block()
-		elif event.button_index == BUTTON_RIGHT and event.pressed:
-			_place_block(1)
 
 
 func _physics_process(delta: float) -> void:
@@ -58,27 +48,8 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	
 	timers(delta)
-	apply_velocity()
+	move_and_slide()
 
-
-func _hit_block():
-	if not Global.fg_tilemap:
-		return
-	Global.fg_tilemap.hit_tile()
-	
-
-func _place_block(tile):
-	if not Global.fg_tilemap:
-		return
-	var placed = Global.fg_tilemap.place_tile(tile)
-	print(placed)
-
-
-func apply_velocity() -> void:
-	if is_jumping:
-		velocity = move_and_slide(velocity, Vector2.UP)
-	else:
-		velocity = move_and_slide_with_snap(velocity, Vector2(0, 16), Vector2.UP)
 
 
 func x_movement(delta: float) -> void:
@@ -128,7 +99,7 @@ func jump_logic(_delta: float) -> void:
 		is_jumping = true
 		jump_coyote_timer = 0
 		jump_buffer_timer = 0
-		 # If falling, account for that lost speed
+		# If falling, account for that lost speed
 		if velocity.y > 0:
 			velocity.y -= velocity.y
 		

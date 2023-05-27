@@ -4,6 +4,9 @@ var _prev_gravity_scale
 var target_body :Node2D
 var _attraction_force = 0
 
+func _ready():
+	apply_central_impulse(Vector2(0, -200.0))
+
 func follow(body: Node2D, attraction_force):
 	_attraction_force = attraction_force
 	collision_mask &=  0b0 # LSB is world mask

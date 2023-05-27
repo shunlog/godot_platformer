@@ -64,13 +64,13 @@ func _physics_process(delta: float) -> void:
 func _hit_block():
 	if not Global.fg_tilemap:
 		return
-	Global.fg_tilemap.hit_block()
+	Global.fg_tilemap.hit_tile()
 	
 
 func _place_block(tile):
 	if not Global.fg_tilemap:
 		return
-	var placed = Global.fg_tilemap.place_block(tile)
+	var placed = Global.fg_tilemap.place_tile(tile)
 	print(placed)
 
 

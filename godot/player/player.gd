@@ -5,20 +5,20 @@ var face_direction := 1
 var x_dir := 1
 
 @export var max_speed: float = 1300
-@export var acceleration: float = 5000
+@export var acceleration: float = 5500
 @export var turning_acceleration : float = 9600
-@export var deceleration: float = 4000
+@export var deceleration: float = 6500
 # ------------------------------------------ #
 
 # GRAVITY ----- #
-@export var gravity_acceleration : float = 4000
-@export var gravity_max : float = 5000
+@export var gravity_acceleration : float = 5000
+@export var gravity_max : float = 6000
 # ------------- #
 
 # JUMP VARAIABLES ------------------- #
-@export var jump_force : float = 1700
+@export var jump_force : float = 2000
 @export var jump_cut : float = 0.4
-@export var jump_gravity_max : float = 1500
+@export var jump_gravity_max : float = 1800
 @export var jump_hang_treshold : float = 1.0
 @export var jump_hang_gravity_mult : float = 0.1
 # Timers

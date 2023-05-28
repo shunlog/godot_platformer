@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dt4yo1d5ciue2"]
 
-[ext_resource type="Texture2D" uid="uid://dmnabgrkelarr" path="res://world/tilemap/tileset/img/kenney.webp" id="1_7lpw5"]
+[ext_resource type="Texture2D" uid="uid://d0k0bqmyf5wru" path="res://world/tilemap/tileset/img/kenney.webp" id="1_7lpw5"]
 [ext_resource type="PackedScene" uid="uid://da3mqsk3v3n12" path="res://world/tilemap/tileset/cpu_particles_2d.tscn" id="2_fnwnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_se8ym"]

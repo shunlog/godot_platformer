@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://x6vbuq3ahdq8"]
+[gd_scene load_steps=3 format=3 uid="uid://x6vbuq3ahdq8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_mbh66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkewn"]
-size = Vector2(60, 114)
-
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_4oauj"]
-length = 6.0
-slide_on_slope = true
+size = Vector2(60, 120)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mbh66")
@@ -19,17 +15,4 @@ color = Color(1, 1, 0, 1)
 polygon = PackedVector2Array(-30, -60, 30, -60, 30, 60, -30, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_pkewn")
-
-[node name="RayCollisionShape1" type="CollisionShape2D" parent="."]
-position = Vector2(-29, 54)
-shape = SubResource("SeparationRayShape2D_4oauj")
-
-[node name="RayCollisionShape2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 54)
-shape = SubResource("SeparationRayShape2D_4oauj")
-
-[node name="RayCollisionShape3" type="CollisionShape2D" parent="."]
-position = Vector2(29, 54)
-shape = SubResource("SeparationRayShape2D_4oauj")

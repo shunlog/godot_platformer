@@ -13,7 +13,7 @@ func _unhandled_input(event):
 			zoom_at_point(zoom_mult, event.position)
 		elif (event.button_index == MOUSE_BUTTON_WHEEL_UP):
 			zoom_at_point(1/zoom_mult, event.position)
-		elif event.button_index == MOUSE_BUTTON_LEFT:
+		elif event.button_index == MOUSE_BUTTON_MIDDLE:
 			if event.is_pressed():
 				_moveCamera = true;
 			else:

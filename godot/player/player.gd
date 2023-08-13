@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export var tilemap : TileMap
-var reachable_distance := 10
+var reachable_distance := 5
 
 
-func _tile_clicked(pos):
+func _set_tile_terrain(pos, terrain):
 	if not tilemap:
 		return
 		
@@ -13,13 +13,23 @@ func _tile_clicked(pos):
 	if abs(tpos.x - tself.x) + abs(tpos.y - tself.y) > reachable_distance:
 		return
 		
-	tilemap.set_cells_terrain_connect(1, [tpos], 0, 3)
+	tilemap.set_cells_terrain_connect(0, [tpos], 0, terrain)
+
+func _place_tile():
+	var pos = get_global_mouse_position()
+	_set_tile_terrain(pos, 0)
+
+func _erase_tile():
+	var pos = get_global_mouse_position()
+	_set_tile_terrain(pos, -1)
+
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var pos = get_global_mouse_position()
-			_tile_clicked(pos)
+			_place_tile()
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			_erase_tile()
 
 
 # BASIC MOVEMENT VARAIABLES ---------------- #

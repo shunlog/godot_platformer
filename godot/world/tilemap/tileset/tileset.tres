@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dt4yo1d5ciue2"]
 
-[ext_resource type="Texture2D" uid="uid://dgg0negpk724f" path="res://world/tilemap/tileset/img/grass.png" id="1_m7xed"]
-[ext_resource type="Texture2D" uid="uid://bnp4e2y6y5pb" path="res://world/tilemap/tileset/img/using_tilesets_terrain_example_tilesheet.webp" id="2_16j7g"]
+[ext_resource type="Texture2D" uid="uid://b3xgm1spg14as" path="res://world/tilemap/tileset/img/grass.png" id="1_m7xed"]
+[ext_resource type="Texture2D" uid="uid://lyefean5wihq" path="res://world/tilemap/tileset/img/using_tilesets_terrain_example_tilesheet.webp" id="2_16j7g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l27cd"]
 resource_name = "grass"

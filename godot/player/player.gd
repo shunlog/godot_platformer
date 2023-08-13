@@ -15,8 +15,30 @@ func _set_tile_terrain(pos, terrain):
 		
 	tilemap.set_cells_terrain_connect(0, [tpos], 0, terrain)
 
+func _player_in_tile(pos: Vector2) -> bool:
+	# returns true if player collides with the tile at global position pos
+	
+	if not tilemap:
+		return false
+
+	# tile size
+	var ts = tilemap.tile_set.tile_size[0]
+	# collision box size
+	var sz : Vector2 = $CollisionShape2D.shape.size
+	# left-up corner
+	var corner_LU: Vector2 = (position - sz / 2) - (position - sz / 2).posmod(ts)
+	# right-down corner
+	var corner_RD: Vector2 = (position + sz / 2) - (position + sz / 2).posmod(ts) + Vector2(ts, ts)
+	var bounding_tiles_rect : Rect2 = Rect2(corner_LU, corner_RD - corner_LU)
+	
+	if bounding_tiles_rect.has_point(pos):
+		return true
+	return false
+
 func _place_tile():
 	var pos = get_global_mouse_position()
+	if _player_in_tile(pos):
+		return
 	_set_tile_terrain(pos, 0)
 
 func _erase_tile():

@@ -6,11 +6,16 @@ extends CharacterBody2D
 @export var GRAVITY_PER_TICK: float = 0.4 # pix/tick
 # 37.5 (tile/sec) * 16/60 (pix/tick * sec/tile) = 10 pix/tick
 @export var MAX_FALLING_VELOCITY_PER_TICK: float = 10.0 # pix/tick
+@export var MAX_RUN_SPEED_PER_TICK : float = 3.0 # pix/tick
+@export var RUN_ACCELERATION_PER_TICK : float = 0.08 # pix/tick
+@export var RUN_SLOWDOWN_PER_TICK : float = 0.2 # pix/tick
 
 # computed constants
 var GRAVITY: float = GRAVITY_PER_TICK * 60 # pix/second
-var SPEED: float = 300.0
 var JUMP_VELOCITY: float = - JUMP_SPEED_PER_TICK * 60 # pix/second
+var MAX_RUN_SPEED: float = MAX_RUN_SPEED_PER_TICK * 60 # pix/second
+var RUN_ACCELERATION: float = RUN_ACCELERATION_PER_TICK * 60 # pix/second
+var RUN_SLOWDOWN: float = RUN_SLOWDOWN_PER_TICK * 60 # pix/second
 
 # state variables
 var jump_duration_timer: int = 0
@@ -43,14 +48,18 @@ func _physics_process(delta):
 	# terraria does this for some reason
 	# source: https://github.com/tModLoader/tModLoader/wiki/Terraria.Player.Update()-Execution-Order
 	MAX_FALLING_VELOCITY += 0.01 * 60 
-	print(MAX_FALLING_VELOCITY)
 	
 	# Handle X-movement
+	# direction is in the interval [-1.0, 1.0]
 	var direction = Input.get_axis("player_left", "player_right")
 	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x += direction * RUN_ACCELERATION
+		if direction == 1:
+			velocity.x = min(velocity.x, MAX_RUN_SPEED)
+		else:
+			velocity.x = max(velocity.x, -MAX_RUN_SPEED)
+	if not direction or direction * velocity.x < 0:
+		velocity.x = move_toward(velocity.x, 0, RUN_SLOWDOWN)
 
 	# move_and_slide() already takes delta time into account
 	move_and_slide()

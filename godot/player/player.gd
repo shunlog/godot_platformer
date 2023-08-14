@@ -76,7 +76,7 @@ var x_dir := 1
 @export var jump_hang_treshold : float = 1.0
 @export var jump_hang_gravity_mult : float = 0.1
 # Timers
-@export var jump_coyote : float = 0.08
+@export var jump_coyote : float = 0.8
 @export var jump_buffer : float = 0.1
 
 var jump_coyote_timer : float = 0

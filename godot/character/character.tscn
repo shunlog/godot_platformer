@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd5vj5p17spmq"]
+
+[ext_resource type="Script" path="res://character/character.gd" id="1_a3iye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js2ko"]
+size = Vector2(20, 40)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_a3iye")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite"]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-10, -20, 10, -20, 10, 20, -10, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_js2ko")

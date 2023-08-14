@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_mbh66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkewn"]
-size = Vector2(30, 46)
+size = Vector2(20, 40)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mbh66")
@@ -12,7 +12,7 @@ script = ExtResource("1_mbh66")
 
 [node name="Polygon2D" type="Polygon2D" parent="Sprite"]
 color = Color(1, 1, 0, 1)
-polygon = PackedVector2Array(-15, -23, 15, -23, 15, 23, -15, 23)
+polygon = PackedVector2Array(-10, -20, 10, -20, 10, 20, -10, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pkewn")

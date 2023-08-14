@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dt4yo1d5ciue2"]
 
-[ext_resource type="Texture2D" uid="uid://c3mhfl6pswrdq" path="res://world/tilemap/tileset/img/dirt.png" id="1_60pul"]
-[ext_resource type="Texture2D" uid="uid://dl8quryp2uqad" path="res://world/tilemap/tileset/img/tilesheet.webp" id="2_16j7g"]
-[ext_resource type="Texture2D" uid="uid://dipd1annbqno6" path="res://world/tilemap/tileset/img/stone.png" id="2_jdx1m"]
+[ext_resource type="Texture2D" uid="uid://c3mhfl6pswrdq" path="res://world/tilemap/tileset/assets/dirt.png" id="1_88pu7"]
+[ext_resource type="Texture2D" uid="uid://dipd1annbqno6" path="res://world/tilemap/tileset/assets/stone.png" id="2_1cfyk"]
+[ext_resource type="Texture2D" uid="uid://dl8quryp2uqad" path="res://world/tilemap/tileset/assets/tilesheet.webp" id="3_kcabb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sv1db"]
-texture = ExtResource("1_60pul")
+texture = ExtResource("1_88pu7")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -569,7 +569,7 @@ separation = Vector2i(2, 2)
 8:4/0/terrains_peering_bit/left_side = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rlid"]
-texture = ExtResource("2_jdx1m")
+texture = ExtResource("2_1cfyk")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1122,7 +1122,7 @@ separation = Vector2i(2, 2)
 6:14/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2o0le"]
-texture = ExtResource("2_16j7g")
+texture = ExtResource("3_kcabb")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0

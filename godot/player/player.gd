@@ -39,7 +39,7 @@ func _place_tile():
 	var pos = get_global_mouse_position()
 	if _player_in_tile(pos):
 		return
-	_set_tile_terrain(pos, 0)
+	_set_tile_terrain(pos, 1)
 
 func _erase_tile():
 	var pos = get_global_mouse_position()

@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://x6vbuq3ahdq8"]
+[gd_scene load_steps=4 format=3 uid="uid://dd5vj5p17spmq"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_mbh66"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_iqif2"]
+[ext_resource type="Script" path="res://player/inventory.gd" id="2_eg3uw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkewn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js2ko"]
 size = Vector2(20, 40)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_mbh66")
+script = ExtResource("1_iqif2")
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -15,4 +16,7 @@ color = Color(1, 1, 0, 1)
 polygon = PackedVector2Array(-10, -20, 10, -20, 10, 20, -10, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_pkewn")
+shape = SubResource("RectangleShape2D_js2ko")
+
+[node name="Inventory" type="Node2D" parent="."]
+script = ExtResource("2_eg3uw")

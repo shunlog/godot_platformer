@@ -63,3 +63,16 @@ func _physics_process(_delta):
 
 	# move_and_slide() already takes delta time into account
 	move_and_slide()
+
+
+func get_bounding_tiles_rect() -> Rect2:
+	# tile size
+	var ts = Global.tilemap.tile_set.tile_size[0]
+	# collision box size
+	var sz : Vector2 = $CollisionShape2D.shape.size
+	# left-up corner
+	var corner_LU: Vector2 = (position - sz / 2) - (position - sz / 2).posmod(ts)
+	# right-down corner
+	var corner_RD: Vector2 = (position + sz / 2) - (position + sz / 2).posmod(ts) + Vector2(ts, ts)
+	var bounding_tiles_rect : Rect2 = Rect2(corner_LU, corner_RD - corner_LU)
+	return bounding_tiles_rect

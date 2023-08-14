@@ -7,7 +7,7 @@ func _set_tile_terrain(pos, terrain):
 		return
 		
 	var tpos = Global.tilemap.local_to_map(pos)
-	var tself = Global.tilemap.local_to_map(get_parent().position)
+	var tself = Global.tilemap.local_to_map(global_position)
 	if abs(tpos.x - tself.x) + abs(tpos.y - tself.y) > reachable_distance:
 		return
 		
@@ -18,21 +18,10 @@ func _player_in_tile(pos: Vector2) -> bool:
 	if not Global.tilemap:
 		return false
 		
-	# need to figure out how to get array of all entities (group?)
-	return false
-
-	# tile size
-	var ts = Global.tilemap.tile_set.tile_size[0]
-	# collision box size
-	var sz : Vector2 = $CollisionShape2D.shape.size
-	# left-up corner
-	var corner_LU: Vector2 = (position - sz / 2) - (position - sz / 2).posmod(ts)
-	# right-down corner
-	var corner_RD: Vector2 = (position + sz / 2) - (position + sz / 2).posmod(ts) + Vector2(ts, ts)
-	var bounding_tiles_rect : Rect2 = Rect2(corner_LU, corner_RD - corner_LU)
-	
-	if bounding_tiles_rect.has_point(pos):
-		return true
+	var entities = get_tree().get_nodes_in_group("entities")
+	for entity in entities:
+		if entity.get_bounding_tiles_rect().has_point(pos):
+			return true
 	return false
 
 func _place_tile():
